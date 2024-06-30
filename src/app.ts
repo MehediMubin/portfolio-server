@@ -1,6 +1,6 @@
 import cors from "cors";
 import express, { Application, Request, Response } from "express";
-// import globalErrorHandler from './app/middlewares/globalErrorhandler';
+import globalErrorHandler from "./middlewares/globalErrorHandler";
 import notFound from "./middlewares/notFound";
 import router from "./routes";
 
@@ -18,7 +18,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Welcome to Portfolio Server!");
 });
 
-// app.use(globalErrorHandler);
+app.use(globalErrorHandler);
 
 //Not Found
 app.use(notFound);
