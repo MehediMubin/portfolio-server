@@ -23,7 +23,16 @@ const updateProject = async (id: string, payload: Partial<TProject>) => {
   return result;
 };
 
+const deleteProject = async (id: string) => {
+  const res = await ProjectModel.findByIdAndDelete(id);
+  if (!res) {
+    throw new Error("Project not found or already deleted");
+  }
+  return res;
+};
+
 export const ProjectServices = {
   createProject,
   updateProject,
+  deleteProject,
 };

@@ -21,4 +21,10 @@ router.put(
   ProjectControllers.updateProject,
 );
 
+router.delete(
+  "/delete/:id",
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
+  ProjectControllers.deleteProject,
+);
+
 export const ProjectRoutes = router;
