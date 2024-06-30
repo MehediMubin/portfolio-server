@@ -14,4 +14,17 @@ router.post(
   BlogControllers.createBlog,
 );
 
+router.put(
+  "/edit/:id",
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
+  validateRequest(BlogValidation.editBlogValidationSchema),
+  BlogControllers.updateBlog,
+);
+
+router.delete(
+  "/delete/:id",
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
+  BlogControllers.deleteBlog,
+);
+
 export const BlogRoutes = router;

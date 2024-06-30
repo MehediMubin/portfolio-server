@@ -6,6 +6,33 @@ const createBlog = async (payload: TBlog) => {
   return res;
 };
 
+const updateBlog = async (id: string, payload: Partial<TBlog>) => {
+  const existingBlog = await BlogModel.findById(id);
+  if (!existingBlog) {
+    throw new Error("Blog not found");
+  }
+
+  const result = await BlogModel.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  });
+
+  if (!result) {
+    throw new Error("Update failed");
+  }
+
+  return result;
+};
+
+const deleteBlog = async (id: string) => {
+  const res = await BlogModel.findByIdAndDelete(id);
+  if (!res) {
+    throw new Error("Blog not found or already deleted");
+  }
+  return res;
+};
+
 export const BlogServices = {
   createBlog,
+  updateBlog,
+  deleteBlog,
 };
