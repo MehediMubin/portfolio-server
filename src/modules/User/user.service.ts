@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 import { TUser } from "./user.interface";
 import { UserModel } from "./user.model";
 
@@ -6,7 +8,9 @@ const createUser = async (payload: TUser) => {
     ...payload,
     role: "admin",
   });
-  return res;
+
+  const { password, ...resWithoutPassword } = res.toObject();
+  return resWithoutPassword;
 };
 
 export const UserServices = {

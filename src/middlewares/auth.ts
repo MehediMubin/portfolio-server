@@ -22,10 +22,12 @@ const auth = (...requiredRoles: TUserRole[]) => {
       config.jwt.access_token_secret as string,
     ) as JwtPayload;
 
-    const { role, userId } = decoded;
+    const { role, username } = decoded;
 
     // checking if the user is exist
-    const user = await UserModel.findById(userId);
+    const user = await UserModel.findOne({
+      username,
+    });
 
     if (!user) {
       throw new AppError(httpStatus.NOT_FOUND, "This user is not found !");
