@@ -1,6 +1,6 @@
 import config from "../config";
 import { USER_ROLE } from "../modules/User/user.constant";
-import { User } from "../modules/User/user.model";
+import { UserModel } from "../modules/User/user.model";
 
 const superUser = {
   username: "mehedi",
@@ -9,10 +9,12 @@ const superUser = {
 };
 
 const seedSuperAdmin = async () => {
-  const isSuperAdminExits = await User.findOne({ role: USER_ROLE.superAdmin });
+  const isSuperAdminExits = await UserModel.findOne({
+    role: USER_ROLE.superAdmin,
+  });
 
   if (!isSuperAdminExits) {
-    await User.create(superUser);
+    await UserModel.create(superUser);
   }
 };
 

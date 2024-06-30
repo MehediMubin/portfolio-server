@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
 import bcrypt from "bcrypt";
 import { Schema, model } from "mongoose";
-import { TUser, UserModel } from './user.interface';
 import config from "../../config";
+import { TUser } from "./user.interface";
 
-const userSchema = new Schema<TUser, UserModel>(
+const userSchema = new Schema<TUser>(
   {
     username: {
       type: String,
@@ -26,7 +26,7 @@ const userSchema = new Schema<TUser, UserModel>(
   },
 );
 
-userSchema.pre('save', async function (next) {
+userSchema.pre("save", async function (next) {
   // eslint-disable-next-line @typescript-eslint/no-this-alias
   const user = this; // doc
   // hashing password and save into DB
@@ -37,4 +37,4 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-export const User = model<TUser, UserModel>("User", userSchema);
+export const UserModel = model<TUser>("User", userSchema);
