@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const projectValidationSchema = z.object({
+const createProjectValidationSchema = z.object({
   body: z.object({
     title: z.string({
       required_error: "Title is required",
@@ -19,6 +19,28 @@ const projectValidationSchema = z.object({
   }),
 });
 
+const editProjectValidationSchema = z.object({
+  body: z.object({
+    title: z.string().optional(),
+    description: z.string().optional(),
+    githubRepo: z
+      .string()
+      .optional()
+      .refine(
+        (url) => {
+          return (
+            !url ||
+            /^(https?:\/\/)?(www\.)?github\.com\/[\w.-]+\/[\w.-]+$/.test(url)
+          );
+        },
+        {
+          message: "Invalid Github Repository URL",
+        },
+      ),
+  }),
+});
+
 export const ProjectValidation = {
-  projectValidationSchema,
+  createProjectValidationSchema,
+  editProjectValidationSchema,
 };

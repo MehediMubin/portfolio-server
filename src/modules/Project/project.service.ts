@@ -6,6 +6,14 @@ const createProject = async (payload: TProject) => {
   return res;
 };
 
+const updateProject = async (id: string, payload: Partial<TProject>) => {
+  const result = await ProjectModel.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  });
+  return result;
+};
+
 export const ProjectServices = {
   createProject,
+  updateProject,
 };

@@ -10,8 +10,15 @@ const router = Router();
 router.post(
   "/create",
   auth(USER_ROLE.superAdmin, USER_ROLE.admin),
-  validateRequest(ProjectValidation.projectValidationSchema),
+  validateRequest(ProjectValidation.createProjectValidationSchema),
   ProjectControllers.createProject,
+);
+
+router.put(
+  "/edit/:id",
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
+  validateRequest(ProjectValidation.editProjectValidationSchema),
+  ProjectControllers.updateProject,
 );
 
 export const ProjectRoutes = router;
