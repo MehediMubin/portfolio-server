@@ -14,4 +14,11 @@ router.post(
   SkillControllers.createSkill,
 );
 
+router.put(
+  "/edit",
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
+  validateRequest(SkillValidation.editSkillValidationSchema),
+  SkillControllers.updateSkill,
+);
+
 export const SkillRoutes = router;

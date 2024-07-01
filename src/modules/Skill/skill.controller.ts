@@ -13,6 +13,17 @@ const createSkill = catchAsync(async (req, res) => {
   });
 });
 
+const updateSkill = catchAsync(async (req, res) => {
+  const result = await SkillServices.updateSkill(req.params.id, req.body);
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "Skill Updated Successfully",
+    data: result,
+  });
+});
+
 export const SkillControllers = {
   createSkill,
+  updateSkill,
 };

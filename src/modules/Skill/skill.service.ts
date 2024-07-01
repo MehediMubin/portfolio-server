@@ -6,6 +6,14 @@ const createSkill = async (payload: TSkill) => {
   return res;
 };
 
+const updateSkill = async (id: string, payload: TSkill) => {
+  const res = await SkillModel.findByIdAndUpdate(id, payload, {
+    new: true,
+  });
+  return res;
+};
+
 export const SkillServices = {
   createSkill,
+  updateSkill,
 };
