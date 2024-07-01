@@ -22,14 +22,16 @@ const editSkillValidationSchema = z.object({
       })
       .refine((name) => name !== "", {
         message: "Name is required",
-      }),
+      })
+      .optional(),
     category: z
       .string({
         invalid_type_error: "Category must be string",
       })
       .refine((category) => category !== "", {
         message: "Category is required",
-      }),
+      })
+      .optional(),
   }),
 });
 
