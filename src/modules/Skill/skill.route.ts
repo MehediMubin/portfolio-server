@@ -15,10 +15,16 @@ router.post(
 );
 
 router.put(
-  "/edit",
+  "/edit/:id",
   auth(USER_ROLE.superAdmin, USER_ROLE.admin),
   validateRequest(SkillValidation.editSkillValidationSchema),
   SkillControllers.updateSkill,
+);
+
+router.delete(
+  "/delete/:id",
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
+  SkillControllers.deleteSkill,
 );
 
 export const SkillRoutes = router;

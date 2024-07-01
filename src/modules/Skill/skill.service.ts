@@ -13,7 +13,13 @@ const updateSkill = async (id: string, payload: TSkill) => {
   return res;
 };
 
+const deleteSkill = async (id: string) => {
+  const res = await SkillModel.findByIdAndDelete(id);
+  return res;
+};
+
 export const SkillServices = {
   createSkill,
   updateSkill,
+  deleteSkill,
 };
