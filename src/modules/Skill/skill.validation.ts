@@ -33,7 +33,7 @@ const editSkillValidationSchema = z.object({
   }),
 });
 
-export const ExperienceValidation = {
+export const SkillValidation = {
   createSkillValidationSchema,
   editSkillValidationSchema,
 };
