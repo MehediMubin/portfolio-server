@@ -30,17 +30,21 @@ const createExperienceValidationSchema = z.object({
       }),
     }),
   }),
-  endDate: z.object({
-    month: z.string({
-      invalid_type_error: "End Month must be string",
-    }),
-    year: z.number({
-      invalid_type_error: "End Year must be number",
-    }),
-  }),
-  description: z.string({
-    invalid_type_error: "Description must be string",
-  }),
+  endDate: z
+    .object({
+      month: z.string({
+        invalid_type_error: "End Month must be string",
+      }),
+      year: z.number({
+        invalid_type_error: "End Year must be number",
+      }),
+    })
+    .optional(),
+  description: z
+    .string({
+      invalid_type_error: "Description must be string",
+    })
+    .optional(),
 });
 
 const editExperienceValidationSchema = z.object({
@@ -107,9 +111,11 @@ const editExperienceValidationSchema = z.object({
         }),
     })
     .optional(),
-  description: z.string({
-    required_error: "Description is required",
-  }),
+  description: z
+    .string({
+      invalid_type_error: "Description must be string",
+    })
+    .optional(),
 });
 
 export const ExperienceValidation = {
