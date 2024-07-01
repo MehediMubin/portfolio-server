@@ -26,7 +26,18 @@ const udpateExperience = catchAsync(async (req, res) => {
   });
 });
 
+const deleteExperience = catchAsync(async (req, res) => {
+  const result = await ExperienceServices.deleteExperience(req.params.id);
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "Experience Deleted Successfully",
+    data: result,
+  });
+});
+
 export const ExperienceControllers = {
   createExperience,
   udpateExperience,
+  deleteExperience,
 };

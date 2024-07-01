@@ -13,7 +13,13 @@ const udpateExperience = async (id: string, payload: TExperience) => {
   return res;
 };
 
+const deleteExperience = async (id: string) => {
+  const res = await ExperienceModel.findByIdAndDelete(id);
+  return res;
+};
+
 export const ExperienceServices = {
   createExperience,
   udpateExperience,
+  deleteExperience,
 };

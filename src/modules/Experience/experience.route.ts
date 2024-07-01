@@ -21,4 +21,10 @@ router.put(
   ExperienceControllers.udpateExperience,
 );
 
+router.delete(
+  "/delete/:id",
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
+  ExperienceControllers.deleteExperience,
+);
+
 export const ExperienceRoutes = router;
