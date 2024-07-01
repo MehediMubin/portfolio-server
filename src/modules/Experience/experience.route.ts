@@ -14,4 +14,11 @@ router.post(
   ExperienceControllers.createExperience,
 );
 
+router.put(
+  "/edit/:id",
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
+  validateRequest(ExperienceValidation.editExperienceValidationSchema),
+  ExperienceControllers.udpateExperience,
+);
+
 export const ExperienceRoutes = router;

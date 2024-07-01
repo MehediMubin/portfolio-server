@@ -13,6 +13,20 @@ const createExperience = catchAsync(async (req, res) => {
   });
 });
 
+const udpateExperience = catchAsync(async (req, res) => {
+  const result = await ExperienceServices.udpateExperience(
+    req.params.id,
+    req.body,
+  );
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "Experience Updated Successfully",
+    data: result,
+  });
+});
+
 export const ExperienceControllers = {
   createExperience,
+  udpateExperience,
 };

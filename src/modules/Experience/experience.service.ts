@@ -6,6 +6,14 @@ const createExperience = async (payload: TExperience) => {
   return res;
 };
 
+const udpateExperience = async (id: string, payload: TExperience) => {
+  const res = await ExperienceModel.findByIdAndUpdate(id, payload, {
+    new: true,
+  });
+  return res;
+};
+
 export const ExperienceServices = {
   createExperience,
+  udpateExperience,
 };
