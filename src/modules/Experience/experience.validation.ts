@@ -112,7 +112,7 @@ const editExperienceValidationSchema = z.object({
   }),
 });
 
-export const ProjectValidation = {
+export const ExperienceValidation = {
   createExperienceValidationSchema,
   editExperienceValidationSchema,
 };
