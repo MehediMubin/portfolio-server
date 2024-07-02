@@ -6,6 +6,11 @@ const createBlog = async (payload: TBlog) => {
   return res;
 };
 
+const getAllBlogs = async () => {
+  const res = await BlogModel.find();
+  return res;
+};
+
 const updateBlog = async (id: string, payload: Partial<TBlog>) => {
   const existingBlog = await BlogModel.findById(id);
   if (!existingBlog) {
@@ -33,6 +38,7 @@ const deleteBlog = async (id: string) => {
 
 export const BlogServices = {
   createBlog,
+  getAllBlogs,
   updateBlog,
   deleteBlog,
 };
