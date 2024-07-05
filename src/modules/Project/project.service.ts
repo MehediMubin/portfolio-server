@@ -1,6 +1,11 @@
 import { TProject } from "./project.interface";
 import { ProjectModel } from "./project.model";
 
+const getAllProjects = async () => {
+  const res = await ProjectModel.find();
+  return res;
+};
+
 const createProject = async (payload: TProject) => {
   const res = await ProjectModel.create(payload);
   return res;
@@ -32,6 +37,7 @@ const deleteProject = async (id: string) => {
 };
 
 export const ProjectServices = {
+  getAllProjects,
   createProject,
   updateProject,
   deleteProject,

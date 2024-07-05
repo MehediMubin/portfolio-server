@@ -7,6 +7,8 @@ import { ProjectValidation } from "./project.validation";
 
 const router = Router();
 
+router.get("/", ProjectControllers.getAllProjects);
+
 router.post(
   "/create",
   auth(USER_ROLE.superAdmin, USER_ROLE.admin),

@@ -3,6 +3,16 @@ import catchAsync from "../../utils/catchAsync";
 import sendResponse from "../../utils/sendResponse";
 import { ProjectServices } from "./project.service";
 
+const getAllProjects = catchAsync(async (req, res) => {
+  const result = await ProjectServices.getAllProjects();
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "Projects Fetched Successfully",
+    data: result,
+  });
+});
+
 const createProject = catchAsync(async (req, res) => {
   const result = await ProjectServices.createProject(req.body);
   sendResponse(res, {
@@ -34,6 +44,7 @@ const deleteProject = catchAsync(async (req, res) => {
 });
 
 export const ProjectControllers = {
+  getAllProjects,
   createProject,
   updateProject,
   deleteProject,
