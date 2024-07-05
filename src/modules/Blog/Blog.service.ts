@@ -25,9 +25,7 @@ const updateBlog = async (id: string, payload: Partial<TBlog>) => {
     throw new Error("Blog not found");
   }
 
-  const result = await BlogModel.findOneAndUpdate({ _id: id }, payload, {
-    new: true,
-  });
+  const result = await BlogModel.findByIdAndUpdate(id, payload, { new: true });
 
   if (!result) {
     throw new Error("Update failed");
