@@ -16,6 +16,8 @@ router.post(
 
 router.get("/", BlogControllers.getAllBlogs);
 
+router.get("/:id", BlogControllers.getSingleBlog);
+
 router.put(
   "/edit/:id",
   auth(USER_ROLE.superAdmin, USER_ROLE.admin),

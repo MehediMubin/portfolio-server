@@ -23,6 +23,16 @@ const getAllBlogs = catchAsync(async (req, res) => {
   });
 });
 
+const getSingleBlog = catchAsync(async (req, res) => {
+  const result = await BlogServices.getSingleBlog(req.params.id);
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "Blog Fetched Successfully",
+    data: result,
+  });
+});
+
 const updateBlog = catchAsync(async (req, res) => {
   const result = await BlogServices.updateBlog(req.params.id, req.body);
   sendResponse(res, {
@@ -46,6 +56,7 @@ const deleteBlog = catchAsync(async (req, res) => {
 export const BlogControllers = {
   createBlog,
   getAllBlogs,
+  getSingleBlog,
   updateBlog,
   deleteBlog,
 };

@@ -11,6 +11,14 @@ const getAllBlogs = async () => {
   return res;
 };
 
+const getSingleBlog = async (id: string) => {
+  const res = await BlogModel.findById(id);
+  if (!res) {
+    throw new Error("Blog not found");
+  }
+  return res;
+};
+
 const updateBlog = async (id: string, payload: Partial<TBlog>) => {
   const existingBlog = await BlogModel.findById(id);
   if (!existingBlog) {
@@ -39,6 +47,7 @@ const deleteBlog = async (id: string) => {
 export const BlogServices = {
   createBlog,
   getAllBlogs,
+  getSingleBlog,
   updateBlog,
   deleteBlog,
 };
