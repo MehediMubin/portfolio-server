@@ -1,6 +1,16 @@
 import { TSkill } from "./skill.interface";
 import { SkillModel } from "./skill.model";
 
+const getAllSkills = async () => {
+  const res = await SkillModel.find();
+  return res;
+};
+
+const getSingleSkill = async (id: string) => {
+  const res = await SkillModel.findById(id);
+  return res;
+};
+
 const createSkill = async (payload: TSkill) => {
   const res = await SkillModel.create(payload);
   return res;
@@ -19,6 +29,8 @@ const deleteSkill = async (id: string) => {
 };
 
 export const SkillServices = {
+  getAllSkills,
+  getSingleSkill,
   createSkill,
   updateSkill,
   deleteSkill,

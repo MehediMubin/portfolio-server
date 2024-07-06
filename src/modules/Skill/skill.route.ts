@@ -7,6 +7,10 @@ import { SkillValidation } from "./skill.validation";
 
 const router = Router();
 
+router.get("/", SkillControllers.getAllSkills);
+
+router.get("/:id", SkillControllers.getSingleSkill);
+
 router.post(
   "/create",
   auth(USER_ROLE.superAdmin, USER_ROLE.admin),
