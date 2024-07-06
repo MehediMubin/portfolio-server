@@ -9,6 +9,8 @@ const router = Router();
 
 router.get("/", ProjectControllers.getAllProjects);
 
+router.get("/:id", ProjectControllers.getSingleProject);
+
 router.post(
   "/create",
   auth(USER_ROLE.superAdmin, USER_ROLE.admin),

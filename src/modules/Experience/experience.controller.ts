@@ -13,6 +13,16 @@ const createExperience = catchAsync(async (req, res) => {
   });
 });
 
+const getAllExperiences = catchAsync(async (req, res) => {
+  const result = await ExperienceServices.getAllExperiences();
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "Experience Fetched Successfully",
+    data: result,
+  });
+});
+
 const udpateExperience = catchAsync(async (req, res) => {
   const result = await ExperienceServices.udpateExperience(
     req.params.id,
@@ -37,6 +47,7 @@ const deleteExperience = catchAsync(async (req, res) => {
 });
 
 export const ExperienceControllers = {
+  getAllExperiences,
   createExperience,
   udpateExperience,
   deleteExperience,

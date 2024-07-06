@@ -6,6 +6,11 @@ const getAllProjects = async () => {
   return res;
 };
 
+const getSingleProject = async (id: string) => {
+  const res = await ProjectModel.findById(id);
+  return res;
+};
+
 const createProject = async (payload: TProject) => {
   const res = await ProjectModel.create(payload);
   return res;
@@ -38,6 +43,7 @@ const deleteProject = async (id: string) => {
 
 export const ProjectServices = {
   getAllProjects,
+  getSingleProject,
   createProject,
   updateProject,
   deleteProject,

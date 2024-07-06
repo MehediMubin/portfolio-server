@@ -7,6 +7,8 @@ import { ExperienceValidation } from "./experience.validation";
 
 const router = Router();
 
+router.get("/", ExperienceControllers.getAllExperiences);
+
 router.post(
   "/create",
   auth(USER_ROLE.superAdmin, USER_ROLE.admin),
