@@ -37,7 +37,7 @@ const experienceSchema = new Schema<TExperience>({
       type: Number,
     },
   },
-  Description: {
+  description: {
     type: String,
   },
 });

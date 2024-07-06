@@ -12,5 +12,5 @@ export type TExperience = {
     month: string;
     year: number;
   };
-  Description?: string;
+  description?: string;
 };
