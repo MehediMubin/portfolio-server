@@ -6,11 +6,11 @@ export type TExperience = {
   locationType?: string;
   startDate: {
     month: string;
-    year: number;
+    year: string;
   };
   endDate?: {
     month: string;
-    year: number;
+    year: string;
   };
   description?: string;
 };

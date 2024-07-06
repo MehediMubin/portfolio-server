@@ -24,9 +24,9 @@ const createExperienceValidationSchema = z.object({
         required_error: "Start Month is required",
         invalid_type_error: "Start Month must be string",
       }),
-      year: z.number({
+      year: z.string({
         required_error: "Start Year is required",
-        invalid_type_error: "Start Year must be number",
+        invalid_type_error: "Start Year must be string",
       }),
     }),
   }),
@@ -35,8 +35,8 @@ const createExperienceValidationSchema = z.object({
       month: z.string({
         invalid_type_error: "End Month must be string",
       }),
-      year: z.number({
-        invalid_type_error: "End Year must be number",
+      year: z.string({
+        invalid_type_error: "End Year must be string",
       }),
     })
     .optional(),
@@ -84,10 +84,10 @@ const editExperienceValidationSchema = z.object({
             message: "Start Month is required",
           }),
         year: z
-          .number({
-            invalid_type_error: "Start Year must be number",
+          .string({
+            invalid_type_error: "Start Year must be string",
           })
-          .refine((year) => year !== 0, {
+          .refine((year) => year !== "", {
             message: "Start Year is required",
           }),
       })
@@ -103,10 +103,10 @@ const editExperienceValidationSchema = z.object({
           message: "End Month is required",
         }),
       year: z
-        .number({
-          invalid_type_error: "End Year must be number",
+        .string({
+          invalid_type_error: "End Year must be string",
         })
-        .refine((year) => year !== 0, {
+        .refine((year) => year !== "", {
           message: "End Year is required",
         }),
     })
