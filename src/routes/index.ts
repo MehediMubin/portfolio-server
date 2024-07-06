@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { AuthRoutes } from "../modules/Auth/auth.route";
 import { BlogRoutes } from "../modules/Blog/Blog.route";
+import { CategoryRoutes } from "../modules/Category/category.route";
 import { ExperienceRoutes } from "../modules/Experience/experience.route";
 import { ProjectRoutes } from "../modules/Project/project.route";
 import { SkillRoutes } from "../modules/Skill/skill.route";
@@ -32,6 +33,10 @@ const moduleRoutes = [
   {
     path: "/skills",
     route: SkillRoutes,
+  },
+  {
+    path: "/categories",
+    route: CategoryRoutes,
   },
 ];
 
