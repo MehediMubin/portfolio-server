@@ -9,6 +9,8 @@ const router = Router();
 
 router.get("/", ExperienceControllers.getAllExperiences);
 
+router.get("/:id", ExperienceControllers.getSingleExperience);
+
 router.post(
   "/create",
   auth(USER_ROLE.superAdmin, USER_ROLE.admin),
