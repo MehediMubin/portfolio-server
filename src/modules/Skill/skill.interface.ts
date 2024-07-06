@@ -1,4 +1,6 @@
-export type TSkill = {
+import { Document, ObjectId } from "mongoose";
+
+export interface TSkill extends Document {
   name: string;
-  category: string;
-};
+  categoryId: ObjectId;
+}
