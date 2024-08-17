@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://hopeful-turing-2346d6.netlify.app",
+    origin: "https://hasanmubin.netlify.app/",
     credentials: true,
   }),
 );
